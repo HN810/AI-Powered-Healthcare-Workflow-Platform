@@ -1,188 +1,183 @@
-AI-Powered Healthcare Workflow Platform
+# AI-Powered Healthcare Workflow Platform
 
-Full-stack workflow automation platform for digitizing document-intensive healthcare operations.
+A full-stack healthcare workflow automation platform designed to digitize document-intensive administrative processes and transform unstructured clinical documents into actionable workflow records.
 
-React · FastAPI · Python · SQL · LLMs · JavaScript
+> **Note:** This repository is a public portfolio representation of the project. Source code and implementation details are not included due to confidentiality and proprietary restrictions.
 
-🎥 Watch Demo
+## Overview
 
-Overview
+Healthcare organizations often rely on document-heavy workflows involving referrals, forms, reports, and other clinical communications. Processing these documents manually can require significant administrative effort and coordination across multiple stakeholders.
 
-An AI-powered workflow automation platform designed to reduce manual administrative work in document-intensive healthcare processes.
+I designed and developed a full-stack platform that uses large language models and structured extraction techniques to automate portions of this workflow.
 
-The platform combines document processing, structured information extraction, role-based workflows, and third-party integrations to transform unstructured inputs into actionable records and downstream tasks.
+The platform processes incoming documents, extracts structured information, routes work through configurable workflows, and provides role-based interfaces for operational and domain-specific users.
 
-The system has been deployed with early customers and reduced administrative workload by approximately 50% across targeted workflows.
+## Key Capabilities
 
-Source code: The implementation is private due to confidentiality and intellectual-property restrictions. This repository provides a technical overview and product demonstration without exposing proprietary source code or customer information.
+* **AI document processing** — Classifies and processes incoming unstructured documents using LLM-powered pipelines.
+* **Structured extraction** — Converts relevant document content into structured records using prompt engineering and schema-based extraction.
+* **Workflow automation** — Routes processed information through configurable approval and task workflows.
+* **Role-based dashboards** — Provides different interfaces and actions based on user roles and responsibilities.
+* **Automated record creation** — Converts extracted information into actionable downstream records.
+* **Third-party integrations** — Connects backend services and external APIs to support end-to-end workflow execution.
+* **Auditability** — Tracks workflow actions and state transitions throughout the processing lifecycle.
 
-Key Features
-🤖 AI-Powered Document Processing
+## Architecture
 
-Built an LLM-powered processing pipeline that converts unstructured documents into structured records.
+At a high level, the system follows a document-to-workflow pipeline:
 
-Prompt-engineered extraction workflows
-Structured output validation
-Field-level accuracy evaluation
-Transformation of unstructured documents into actionable records
-90%+ field-level accuracy across evaluated extraction tasks
-⚙️ Workflow Automation
+```text
+Incoming Document
+       │
+       ▼
+Document Processing
+       │
+       ▼
+LLM Classification
+       │
+       ▼
+Structured Extraction
+       │
+       ▼
+Validation / Processing
+       │
+       ▼
+Workflow Engine
+       │
+       ├───────────────┐
+       ▼               ▼
+Operational       Domain-Specific
+Dashboard             Dashboard
+       │               │
+       └───────┬───────┘
+               ▼
+      Downstream Actions
+               │
+               ▼
+       External Services
+```
 
-Designed end-to-end workflows that automate previously manual administrative processes.
+A higher-level architecture diagram is available in [`docs/architecture.png`](docs/architecture.png).
 
-Automated record creation
-Task generation and orchestration
-Approval workflows
-Downstream API integrations
-State-based workflow execution
-📊 Role-Based Dashboards
+## AI / LLM Pipeline
 
-Developed dashboards tailored to different operational and domain-specific stakeholders.
+The document-processing pipeline was designed around two primary stages:
 
-Role-based access and views
-Workflow status tracking
-Approval and review interfaces
-Actionable task management
-Collaboration across different user roles
-🔌 Backend & Integrations
+### 1. Classification
 
-Implemented backend services and integrations responsible for coordinating application workflows.
+Incoming documents are analyzed and categorized so that the appropriate workflow can be selected.
 
-REST APIs with FastAPI
-SQL-backed data management
-Third-party API integrations
-Backend workflow services
-Service-to-service workflow orchestration
-System Architecture
+### 2. Structured Extraction
 
-The system follows a full-stack architecture connecting the user interface, backend services, AI processing pipeline, database, and external integrations.
+Relevant information is extracted from unstructured documents into predefined fields and schemas.
 
-                    ┌──────────────────┐
-                    │   User / Staff   │
-                    └────────┬─────────┘
-                             │
-                             ▼
-                    ┌──────────────────┐
-                    │   React Client   │
-                    │    Dashboards    │
-                    └────────┬─────────┘
-                             │
-                             ▼
-                    ┌──────────────────┐
-                    │   FastAPI API    │
-                    │  Workflow Layer  │
-                    └───────┬───┬──────┘
-                            │   │
-                 ┌──────────┘   └──────────┐
-                 ▼                         ▼
-        ┌─────────────────┐       ┌─────────────────┐
-        │ Document / LLM  │       │  SQL Database   │
-        │   Processing    │       │                 │
-        └────────┬────────┘       └─────────────────┘
-                 │
-                 ▼
-        ┌─────────────────┐
-        │ Structured Data │
-        │  & Workflows    │
-        └────────┬────────┘
-                 │
-                 ▼
-        ┌─────────────────┐
-        │ External APIs / │
-        │ Downstream Jobs │
-        └─────────────────┘
+The extraction pipeline achieved **90%+ field-level accuracy** across the evaluated fields.
 
+The system was designed to prioritize structured, predictable outputs rather than relying on free-form model responses.
 
-Architecture is intentionally presented at a high level to avoid exposing proprietary implementation details.
+## Workflow Automation
 
-Engineering Highlights
-Unstructured → Structured Data
+After document processing, extracted information can initiate downstream workflow actions.
 
-A core engineering challenge was reliably extracting actionable information from highly variable documents.
+The platform supports concepts such as:
 
-The processing pipeline combines prompt engineering, structured extraction, and validation techniques to produce consistent records from unstructured inputs.
+* Workflow states
+* Approval / rejection actions
+* Task assignment
+* Role-based access
+* Status transitions
+* Record creation
+* External service calls
 
-The resulting pipeline achieved 90%+ field-level accuracy across evaluated extraction tasks.
+This allowed document processing to become an actionable operational workflow rather than simply an OCR or text-extraction system.
 
-End-to-End Automation
+## Technology
 
-Rather than treating document extraction as an isolated AI feature, the system connects extraction directly to the operational workflow.
+**Frontend**
 
-Document
-   ↓
-AI Processing
-   ↓
-Structured Record
-   ↓
-Validation
-   ↓
-Workflow / Approval
-   ↓
-Task Creation
-   ↓
-Downstream Integration
+* React
+* JavaScript
 
+**Backend**
 
-This enabled automation of processes that previously required substantial manual coordination.
+* Python
+* FastAPI
 
-Workflow Design
+**AI / ML**
 
-The application supports workflows involving multiple stakeholder types with different responsibilities.
+* Large Language Models
+* Prompt Engineering
+* Structured Extraction
 
-Role-based interfaces allow users to view relevant records, tasks, approvals, and workflow states while maintaining appropriate separation between user roles.
+**Data**
 
-Impact
-Metric	Result
-Administrative workload	~50% reduction
-Document extraction accuracy	90%+ field-level
-Deployment	Early customers
-Automation	End-to-end workflow execution
-Technology
-Frontend
-React
-JavaScript
-Backend
-Python
-FastAPI
-REST APIs
-AI
-Large Language Models (LLMs)
-Prompt engineering
-Structured extraction
-Data
-SQL
-Integrations
-Third-party APIs
-Backend services
-Workflow orchestration
-Demo
+* SQL
+* Relational data modeling
 
-The demonstration shows the platform processing a document, extracting structured information, creating an actionable record, and progressing that record through the workflow.
+**Integrations**
 
-No customer-identifying information or proprietary implementation details are included.
+* REST APIs
+* Backend services
+* Third-party APIs
 
-🎥 Product Demo
+## Impact
 
-▶ Watch the Demo
+The platform was deployed with early customers and was designed to reduce administrative workload associated with document-intensive processes.
 
-Project Impact
+Early deployment resulted in an estimated **~50% reduction in administrative workload** for the targeted workflows.
 
-The platform was deployed with early customers and demonstrated approximately 50% reduction in administrative workload across targeted document-intensive workflows.
+The system also achieved **90%+ field-level accuracy** on the evaluated structured extraction tasks.
 
-The AI processing pipeline achieved 90%+ field-level accuracy across evaluated extraction tasks, enabling reliable conversion of unstructured documents into actionable workflow records.
+## Demo
 
-Confidentiality
+A short product demonstration is available below.
 
-This project was developed for use in a real-world healthcare workflow environment.
+[`demo/demo.mp4`](demo/demo.mp4)
 
-The production source code, customer data, internal infrastructure details, proprietary prompts, and certain implementation specifics are intentionally not included in this repository.
+The demonstration uses synthetic / non-sensitive data and focuses on the product workflow rather than proprietary implementation details.
 
-The material provided here is limited to non-confidential technical and product information.
+## Screenshots
 
-For demonstration purposes, all displayed data is synthetic or anonymized.
+### Dashboard
 
-Note
+![Dashboard](screenshots/dashboard.png)
 
-This repository is intended as a technical project showcase rather than a source-code distribution.
+### Document Processing
 
-The goal is to demonstrate the system's architecture, engineering challenges, product functionality, and real-world impact while respecting applicable confidentiality requirements.
+![Document Processing](screenshots/document-processing.png)
+
+### Workflow
+
+![Workflow](screenshots/workflow.png)
+
+## Engineering Highlights
+
+Some of the main engineering challenges involved:
+
+* Designing reliable structured outputs from LLMs
+* Handling unstructured and inconsistent document formats
+* Connecting AI processing to deterministic backend workflows
+* Designing role-based interfaces around different operational responsibilities
+* Integrating external APIs into downstream workflow execution
+* Building an architecture capable of supporting additional document types and workflows
+
+## Confidentiality
+
+This project involved proprietary software and workflows. As a result, the public repository intentionally excludes:
+
+* Source code
+* Proprietary prompts
+* Production credentials
+* Private API details
+* Customer information
+* Protected health information (PHI)
+* Internal infrastructure details
+* Proprietary business logic
+
+The screenshots and demonstration included in this repository are intended solely to demonstrate the general functionality and engineering scope of the system.
+
+## Project Status
+
+**Deployed / In active development**
+
+This repository serves as a portfolio overview rather than the production source repository.
